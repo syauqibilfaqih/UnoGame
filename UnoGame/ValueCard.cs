@@ -21,7 +21,7 @@ public class ValueCard : Card
         IsSpecialAbility = false;
     }
 
-    public new bool SpecialAbility(UnoGameController game)
+    public override bool SpecialAbility(UnoGameController game)
     {
         // Implement special ability logic for ValueCard (override the 'new' keyword)
         return true;
