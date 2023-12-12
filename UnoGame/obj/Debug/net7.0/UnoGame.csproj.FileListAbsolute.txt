@@ -1,0 +1,15 @@
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.exe
+c:\Users\Batch 7\Documents\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.deps.json
+c:\Users\Batch 7\Documents\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.runtimeconfig.json
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.dll
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.pdb
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.csproj.AssemblyReference.cache
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.AssemblyInfoInputs.cache
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.AssemblyInfo.cs
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.csproj.CoreCompileInputs.cache
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.dll
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\refint\UnoGame.dll
+C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.pdb
+c:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.genruntimeconfig.cache
+c:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\ref\UnoGame.dll
