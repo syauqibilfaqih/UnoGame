@@ -1,6 +1,6 @@
 namespace UnoGame;
 
-public class Player
+public class Player : IPlayer
 {
 	public int Id { get; }
     public string Name { get; }
@@ -11,8 +11,8 @@ public class Player
         Name = name;
     }
 
-    public override int GetHashCode()
-    {
-        return Id.GetHashCode();
-    }
+    // public override int GetHashCode()
+    // {
+    //     return Id.GetHashCode();
+    // }
 }

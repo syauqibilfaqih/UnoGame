@@ -2,6 +2,6 @@ namespace UnoGame;
 
 public interface IPlayer
 {
-	int Id { get; }
-    string Name { get; }
+	public int Id { get; }
+    public string Name { get; }
 }

@@ -13,3 +13,18 @@ C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\refint\UnoGame.dll
 C:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.pdb
 c:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.genruntimeconfig.cache
 c:\Users\Batch 7\Documents\UnoGame\UnoGame\obj\Debug\net7.0\ref\UnoGame.dll
+D:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.exe
+d:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.deps.json
+d:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.runtimeconfig.json
+D:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.dll
+D:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\UnoGame.pdb
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.csproj.AssemblyReference.cache
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.GeneratedMSBuildEditorConfig.editorconfig
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.AssemblyInfoInputs.cache
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.AssemblyInfo.cs
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.csproj.CoreCompileInputs.cache
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.dll
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\refint\UnoGame.dll
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.pdb
+d:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.genruntimeconfig.cache
+d:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\ref\UnoGame.dll
