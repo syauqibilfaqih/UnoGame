@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {}
+    "c:\\Users\\Batch 7\\Documents\\UnoGame\\UnoGame\\UnoGame.csproj": {}
   },
   "projects": {
-    "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {
+    "c:\\Users\\Batch 7\\Documents\\UnoGame\\UnoGame\\UnoGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
+        "projectUniqueName": "c:\\Users\\Batch 7\\Documents\\UnoGame\\UnoGame\\UnoGame.csproj",
         "projectName": "UnoGame",
-        "projectPath": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
-        "packagesPath": "C:\\Users\\alisy\\.nuget\\packages\\",
-        "outputPath": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\obj\\",
+        "projectPath": "c:\\Users\\Batch 7\\Documents\\UnoGame\\UnoGame\\UnoGame.csproj",
+        "packagesPath": "C:\\Users\\Batch 7\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Batch 7\\Documents\\UnoGame\\UnoGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alisy\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Batch 7\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

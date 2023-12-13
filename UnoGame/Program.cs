@@ -11,9 +11,9 @@ class Program
         while (true)
         {
             Console.Write("Enter player Id: ");
-            string idInput = Console.ReadLine();
+            string? idInput = Console.ReadLine();
 
-            if (idInput.ToLower() == "exit")
+            if (idInput?.ToLower() == "exit")
                 break;
 
             if (!int.TryParse(idInput, out int playerId))
@@ -23,7 +23,7 @@ class Program
             }
 
             Console.Write("Enter player name: ");
-            string playerName = Console.ReadLine();
+            string? playerName = Console.ReadLine();
 
             players.Add(new Player(playerId, playerName));
 
