@@ -3,7 +3,7 @@ namespace UnoGame;
 public abstract class Card
 {
     public int Id { get; protected set; }
-    public string Name { get; protected set; }
+    public string? Name { get; protected set; }
     public Color Color { get; protected set; }
     public CardType CardType { get; protected set; }
     public bool IsSpecialAbility { get; set; }

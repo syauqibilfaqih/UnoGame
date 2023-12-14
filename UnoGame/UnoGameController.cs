@@ -31,14 +31,13 @@ public class UnoGameController
     private Dictionary<IPlayer, int> _playerScoreList;
 
     // Constructors
-    public UnoGameController(params IPlayer[] players)
+    public UnoGameController(params IPlayer?[] players)
     {
-        InitializeGame(players);
     }
 
-    public UnoGameController(int maxPlayers, IPlayer player)
+    public UnoGameController(int maxPlayers, IPlayer? player)
     {
-        InitializeGame(Enumerable.Repeat(player, maxPlayers).ToArray());
+       
     }
 
     // Player Methods
@@ -245,11 +244,5 @@ public class UnoGameController
     {
         // Implementation
         return new Dictionary<IPlayer, int>();
-    }
-
-    // Additional Methods (if needed)
-    private void InitializeGame(IPlayer[] players)
-    {
-        // Implementation
     }
 }
