@@ -51,12 +51,6 @@ class Program
 
 		Console.WriteLine(File.ReadAllText(fileName));
 		
-		//============== Single Data Deserialization ==========
-		// string fileName = "PlayersData.json"; 
-		// string jsonFromFile = File.ReadAllText(fileName);
-		// IPlayer? players = JsonSerializer.Deserialize<Player>(jsonFromFile);
-		// Console.WriteLine($"Name: {players?.Name}");
-		
 		//============ Multiple Data Deserialization =========
 		Console.WriteLine("\n\nDesearlizing JSON......\n\n");
 		string jsonFromFile = File.ReadAllText(fileName);
