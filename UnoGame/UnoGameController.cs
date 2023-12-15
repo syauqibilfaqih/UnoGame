@@ -19,24 +19,33 @@ public class UnoGameController
 
 	// Player Fields
 	private IPlayer? _playerNow;
+	private List<IPlayer> _players = new List<IPlayer>();
 	private IPlayer? _winner;
 
 	// Card Fields
 	private IDeck? _cardsOnDeck;
 	private Dictionary<IPlayer, HashSet<Card>>? _cardsOnPlayers;
 	private int? _totalMustDrawCard;
+	private int _maxPlayers;
 	private Stack<Card>? _cardOnTable;
 
 	// Score Fields
 	private Dictionary<IPlayer, int>? _playerScoreList;
 
 	// Constructors
-	public UnoGameController(params IPlayer?[] players)
-	{
-	}
+	// public UnoGameController(params IPlayer?[] players)
+	// {
+	// 	_players = players;
+	// }
 
-	public UnoGameController(int maxPlayers, IPlayer? player)
+	// public UnoGameController(List<IPlayer> players)
+	// {
+	// 	_players = players;
+	// }
+
+	public UnoGameController(int maxPlayers)
 	{
+		_maxPlayers = maxPlayers; 
 	}
 	
 	public UnoGameController()
@@ -44,16 +53,27 @@ public class UnoGameController
 	}
 
 	// Player Methods
-	public bool AddPlayer(IPlayer player)
+	// public bool AddPlayer(IPlayer player)
+	// {
+	// 	// Implementation
+	// 	return false;
+	// }
+
+	public void AddPlayer(IPlayer player, int numberOfIndex)
 	{
 		// Implementation
-		return false;
+		_players.Insert(numberOfIndex, player);
+	}
+	
+	public int GetMaxPlayers()
+	{
+		return _maxPlayers;
 	}
 
 	public IEnumerable<IPlayer> GetPlayerList()
 	{
 		// Implementation
-		return Enumerable.Empty<IPlayer>();
+		return _players;//Enumerable.Empty<IPlayer>();
 	}
 
 	public IPlayer? SwitchPlayer()
@@ -94,7 +114,7 @@ public class UnoGameController
 		return _cardsOnDeck;
 	}
 
-	public bool ShuffleDeck()
+	public void ShuffleDeck()
 	{
 		// Implementation
 		return false;
@@ -165,7 +185,12 @@ public class UnoGameController
 	public Card? GetFirstCard()
 	{
 		// Implementation
-		return null;
+		Random rand = new Random();
+		
+        string val = value[rand.Next(0, value.Length)];
+        string colour = colours[rand.Next(0, colours.Length)];
+        string[] card = { val, colour };
+        return card;
 	}
 
 	// Checking possible card and play the card Methods
@@ -206,10 +231,17 @@ public class UnoGameController
 	}
 
 	// Ending the game Methods
-	public bool IsGameOver(IPlayer player)
+	public bool IsGameOver(List<IPlayer> players)
 	{
 		// Implementation
-		return false;
+		for (int i = 0; i < players.Count; i++)
+        {
+            // if (players[i].Deck().Count == 0)
+                return true;
+			// else
+			// 	return false;
+		}
+		return true;
 	}
 
 	public bool PlayerSayUno(IPlayer player)

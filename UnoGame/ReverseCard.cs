@@ -4,8 +4,8 @@ public class ReverseCard : Card
 {
     public ReverseCard()
     {
-        Id = 0; // Set an appropriate value for the Id
-        Name = "Reverse";
+        // Id = 0; // Set an appropriate value for the Id
+        // Name = "Reverse";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.Reverse;
         IsSpecialAbility = true;
@@ -13,8 +13,8 @@ public class ReverseCard : Card
 
     public ReverseCard(int id, string name, Color color)
     {
-        Id = id;
-        Name = name;
+        // Id = id;
+        // Name = name;
         Color = color;
         CardType = CardType.Reverse;
         IsSpecialAbility = true;
@@ -32,5 +32,5 @@ public class ReverseCard : Card
         return true;
     }
 
-    public override int GetHashCode() => Id;
+    // public override int GetHashCode() => Id;
 }
