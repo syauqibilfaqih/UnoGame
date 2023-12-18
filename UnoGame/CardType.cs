@@ -2,11 +2,11 @@ namespace UnoGame;
 
 public enum CardType
 {
-	Wild = 50,
+	Wild = 30,
     WildDrawFour = 50,
-    DrawTwo = 20,
+    DrawTwo = 25,
     Skip = 20,
-    Reverse = 20,
+    Reverse = 15,
     Value0 = 0,
     Value1 = 1,
     Value2 = 2,

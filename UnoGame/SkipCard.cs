@@ -4,17 +4,17 @@ public class SkipCard : Card
 {
     public SkipCard()
     {
-        Id = 0; // Set an appropriate value for the Id
-        Name = "Skip";
+        // Id = 0; // Set an appropriate value for the Id
+        // Name = "Skip";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.Skip;
         IsSpecialAbility = true;
     }
 
-    public SkipCard(int id, string name, Color color)
+    public SkipCard(/*int id, string name,*/ Color color)
     {
-        Id = id;
-        Name = name;
+        // Id = id;
+        // Name = name;
         Color = color;
         CardType = CardType.Skip;
         IsSpecialAbility = true;
@@ -29,8 +29,11 @@ public class SkipCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        return true;
+        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour)
+            return true;
+        else
+            return false;
     }
 
-    public override int GetHashCode() => Id;
+    // public override int GetHashCode() => Id;
 }

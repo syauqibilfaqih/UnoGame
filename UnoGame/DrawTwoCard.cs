@@ -4,17 +4,17 @@ public class DrawTwoCard : Card
 {
     public DrawTwoCard()
     {
-        Id = 0; // Set an appropriate value for the Id
-        Name = "Draw Two";
+        // Id = 0; // Set an appropriate value for the Id
+        // Name = "Draw Two";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.DrawTwo;
         IsSpecialAbility = true;
     }
 
-    public DrawTwoCard(int id, string name, Color color)
+    public DrawTwoCard(/*int id, string name,*/ Color color)
     {
-        Id = id;
-        Name = name;
+        // Id = id;
+        // Name = name;
         Color = color;
         CardType = CardType.DrawTwo;
         IsSpecialAbility = true;
@@ -29,8 +29,11 @@ public class DrawTwoCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        return true;
+        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour)
+            return true;
+        else
+            return false;
     }
 
-    public override int GetHashCode() => Id;
+    // public override int GetHashCode() => Id;
 }

@@ -11,7 +11,7 @@ public class ReverseCard : Card
         IsSpecialAbility = true;
     }
 
-    public ReverseCard(int id, string name, Color color)
+    public ReverseCard(/*int id, string name,*/ Color color)
     {
         // Id = id;
         // Name = name;
@@ -29,7 +29,10 @@ public class ReverseCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        return true;
+        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour) 
+            return true;
+        else
+            return false;
     }
 
     // public override int GetHashCode() => Id;
