@@ -29,10 +29,7 @@ public class WildDrawFourCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour)
-            return true;
-        else
-            return false;
+        return true;
     }
 
     // public override int GetHashCode() => Id;

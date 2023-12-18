@@ -13,7 +13,23 @@ class Program
 		int numberOfPlayer;
 		List<IPlayer> players = new List<IPlayer>();
 		Console.Clear();
-		Console.WriteLine("Welcome to Uno Game!!!\n");
+
+		Console.WriteLine("__________________________");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|         UNO             |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("|                         |");
+		Console.WriteLine("__________________________");
+
+		Console.WriteLine("\n\n\nWelcome to Uno Game!!!\n");
 
 		while(true)
 		{
@@ -61,7 +77,7 @@ class Program
 		//================ Generating Deck and First Card on Table =========================
 		foreach (var player in unoGameMaster.GetPlayerList())
 		{
-			unoGameMaster.AddCardToPlayer(player, 5);
+			unoGameMaster.AddCardToPlayer(player,5);
 		}
 
 		unoGameMaster.AddCardToTable();
@@ -83,7 +99,11 @@ class Program
 			//================== Giving turn based on the state ========
 			unoGameMaster.SwitchPlayer(indexPlayer);
 			var _playerNow = unoGameMaster.GetPlayerNow();
-			Console.WriteLine($"Card on table: \n");
+			Console.WriteLine($"Press any key if {_playerNow.Name} is ready!");
+			Console.ReadKey();
+			Console.Clear();
+
+			Console.Write($"Card on table: ");
 			ChangeColorConsole(unoGameMaster.GetPlayedCard().Color);
 			Console.WriteLine($"[{unoGameMaster.GetPlayedCard().Color} {unoGameMaster.GetPlayedCard().CardType}]\n");
 			//================== Show list of card per Player ==========
@@ -97,30 +117,33 @@ class Program
 			}
 			ResetColorConsole();
 			Console.WriteLine($"\n\n                          {_playerNow.Name}\n");
+
 			//================== Ask user to give their current card ===
 			//================== or at least take more card ============
-			//int numberOfCardIndex;
+			
 			while(true)
 			{
 				string snumofCardIndex;
 				Console.Write("Input the index of your card or just click enter to pass it: ");
 				snumofCardIndex = Console.ReadLine();
+				//================== Add Card to Player =========
 				if(snumofCardIndex == ""){
 					unoGameMaster.AddCardToPlayer(_playerNow);
 					break;
 				}
-				//================== Check if the card is playable =========
+				//================== Check if the input was valid ==========
 				else if (!int.TryParse(snumofCardIndex, out int numOfCardIndex) || numOfCardIndex == 0)
 				{
 					Console.WriteLine("Invalid input. Please enter a valid integer.");
 					continue;
 				}
-				//================== Add or Remove card from user ==========
+				//================== Check if the card is playable =========
 				else if(!unoGameMaster.IsAnyCardPossible(_playerNow, numOfCardIndex-1, unoGameMaster.GetPlayedCard()))
 				{
 					Console.WriteLine("Invalid input. Please enter a valid index.");
 					continue;
 				}
+				//================== Remove card from user ==========
 				else{
 					unoGameMaster.AddCardToTable(unoGameMaster.CheckPlayerCard(_playerNow).ElementAt(numOfCardIndex-1));
 					unoGameMaster.RemoveCardFromPlayer(_playerNow, unoGameMaster.CheckPlayerCard(_playerNow).ElementAt(numOfCardIndex-1));

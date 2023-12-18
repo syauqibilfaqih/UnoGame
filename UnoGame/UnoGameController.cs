@@ -2,7 +2,7 @@ namespace UnoGame;
 
 public class UnoGameController
 {
-		// Delegate
+	// Delegate
 	public Action<GameStatus>? UpdateGameStatus;
 	public Action<IEnumerable<IPlayer>>? UpdatePlayerList;
 	public Action<IPlayer>? UpdateAddPlayer;
@@ -40,14 +40,21 @@ public class UnoGameController
 		_cardOnTable = new Stack<Card>(); 
 		_maxPlayers = maxPlayers; 
 	}
+	//TO DO : overload constructor with dictionary of custom cards
+	// public UnoGameController()
 	
 	public UnoGameController()
 	{
+		// _cardsOnDeck = new Deck();
+		// _cardsOnPlayers = new Dictionary<IPlayer, List<Card>>();
+		// _cardOnTable = new Stack<Card>();  
+		// _maxPlayers = 2; // default maximum number of player
 	}
 
 	public void AddPlayer(IPlayer player, int numberOfIndex)
 	{
 		// Implementation
+		// TO DO : validation add player based on maximum number of player
 		_players.Insert(numberOfIndex, player);
 	}
 	
@@ -134,6 +141,7 @@ public class UnoGameController
 		// Implementation
 		List<Card> cards = _cardsOnPlayers[player];
 		if(!cards.Any())
+			// _winner = player;
 			return true;
 		else
 			return false;
@@ -224,6 +232,7 @@ public class UnoGameController
 	public IEnumerable<Card> CheckPlayerCard(IPlayer player)
 	{
 		// Implementation
+		// TO DO : give validation to know whether the player is already there or not
 		return _cardsOnPlayers[player];
 	}
 
@@ -236,6 +245,7 @@ public class UnoGameController
 	public void RemoveCardFromPlayer(IPlayer player, Card card)
 	{
 		// Implementation
+		// TO DO : give validation and make a boolean return
 		var listCard =_cardsOnPlayers[player];
 		listCard.Remove(card);
 		_cardsOnPlayers[player] = listCard;

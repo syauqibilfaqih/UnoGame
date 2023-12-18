@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {}
+    "D:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {}
   },
   "projects": {
-    "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {
+    "D:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
+        "projectUniqueName": "D:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
         "projectName": "UnoGame",
-        "projectPath": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
+        "projectPath": "D:\\Practices\\CSharp\\UnoGame\\UnoGame\\UnoGame.csproj",
         "packagesPath": "C:\\Users\\alisy\\.nuget\\packages\\",
-        "outputPath": "d:\\Practices\\CSharp\\UnoGame\\UnoGame\\obj\\",
+        "outputPath": "D:\\Practices\\CSharp\\UnoGame\\UnoGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alisy\\AppData\\Roaming\\NuGet\\NuGet.Config"
