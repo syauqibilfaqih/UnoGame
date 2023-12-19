@@ -285,7 +285,7 @@ public class UnoGameController
 		}	
 	}
 
-	public void PlayerPickColor(IPlayer player, Color color)
+	public void PlayerPickColor(Color color)
 	{
 		// Implementation
 		_pickedColor = color;

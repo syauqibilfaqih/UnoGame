@@ -22,6 +22,12 @@ public class SkipCard : Card
         return true;
     }
 
+    public bool SpecialAbility(UnoGameController game, int indexPlayer)
+    {
+        game.SwitchPlayer(indexPlayer);
+        return true;
+    }
+
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card

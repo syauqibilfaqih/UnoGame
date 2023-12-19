@@ -15,6 +15,16 @@ public class WildDrawFourCard : Card
         return true;
     }
 
+    public bool SpecialAbility(UnoGameController game, IPlayer player, Color color)
+    {
+        game.DrawCard(player);
+        game.DrawCard(player);
+        game.DrawCard(player);
+        game.DrawCard(player);
+        game.PlayerPickColor(color);
+        return true;
+    }
+
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
