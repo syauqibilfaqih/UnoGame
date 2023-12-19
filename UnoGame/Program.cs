@@ -11,6 +11,7 @@ class Program
 	{
 		//============ Receiving Players Data =========
 		int numberOfPlayer;
+		Card currentCard;
 		List<IPlayer> players = new List<IPlayer>();
 		Console.Clear();
 
@@ -93,6 +94,8 @@ class Program
 		unoGameMaster.SwitchGameDirection(Direction.CounterClockwise);
 
 		int indexPlayer = 0;
+		bool skipPlayer = false;
+		
 		//================ Loop Game ===================================
 		while(true) 
 		{
@@ -106,6 +109,7 @@ class Program
 			Console.Write($"Card on table: ");
 			ChangeColorConsole(unoGameMaster.GetPlayedCard().Color);
 			Console.WriteLine($"[{unoGameMaster.GetPlayedCard().Color} {unoGameMaster.GetPlayedCard().CardType}]\n");
+			
 			//================== Show list of card per Player ==========
 			var cards = unoGameMaster.CheckPlayerCard(_playerNow);
 			int count = 1;
@@ -145,13 +149,40 @@ class Program
 				}
 				//================== Remove card from user ==========
 				else{
+					currentCard = unoGameMaster.CheckPlayerCard(_playerNow).ElementAt(numOfCardIndex-1); 
+					if(currentCard.IsSpecialAbility)
+					{
+						currentCard.SpecialAbility(unoGameMaster);
+						if(currentCard.CardType == CardType.Skip)
+						{
+							indexPlayer = indexPlayer + (int)unoGameMaster.GetGameDirection();
+						}
+						if(currentCard.CardType == CardType.Wild || currentCard.CardType == CardType.WildDrawFour)
+						{
+							while(true)
+							{
+								Console.Write("Insert what color you want: ");
+								string sinputColor = Console.ReadLine();
+								try
+								{
+									Color inputColor = (Color)Enum.Parse(typeof(Color), sinputColor, true);
+									unoGameMaster.PlayerPickColor(inputColor);
+									break;
+								}
+								catch (System.Exception)
+								{
+									Console.WriteLine("Invalid input, try again!");
+									//throw;
+								}
+							}
+						}
+					}
+
 					unoGameMaster.AddCardToTable(unoGameMaster.CheckPlayerCard(_playerNow).ElementAt(numOfCardIndex-1));
 					unoGameMaster.RemoveCardFromPlayer(_playerNow, unoGameMaster.CheckPlayerCard(_playerNow).ElementAt(numOfCardIndex-1));
 					break;
 				}
 			}
-			// Console.WriteLine("")
-			// Console.ReadKey();
 
 			Console.Clear();
 
@@ -159,15 +190,20 @@ class Program
 			if(unoGameMaster.IsGameOver(_playerNow))
 			{
 				Console.WriteLine($"Congratulation {_playerNow.Name}!");
+				int scorePlayer = unoGameMaster.GetPlayerScore();
+				Console.WriteLine($"Your score : {scorePlayer}!");
 				Console.ReadKey();
 				Console.Clear();
 				break;
 			}
 				
-			if(indexPlayer+1<numberOfPlayer)
-				indexPlayer=indexPlayer+1;
-			else
-				indexPlayer=0;
+			indexPlayer = indexPlayer + (int)unoGameMaster.GetGameDirection();
+
+			if(indexPlayer > numberOfPlayer-1)
+				indexPlayer = indexPlayer-(numberOfPlayer);
+			if(indexPlayer < 0)
+				indexPlayer = (numberOfPlayer)+indexPlayer;
+
 		//================ Game Ends ===================================
 		}
 
