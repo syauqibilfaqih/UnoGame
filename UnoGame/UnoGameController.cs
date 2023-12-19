@@ -254,7 +254,7 @@ public class UnoGameController
 	{
 		// Implementation
 		List<Card> cards = _cardsOnPlayers[player];
-		if(cards.ElementAt(indexOfCard).IsCardMatch(otherCard))
+		if(cards.ElementAt(indexOfCard).IsCardMatch(otherCard) || cards.ElementAt(indexOfCard).Color == _pickedColor)
 			return true;
 		else
 			return false;
