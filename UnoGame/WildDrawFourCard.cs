@@ -11,17 +11,18 @@ public class WildDrawFourCard : Card
 
     public override bool SpecialAbility(UnoGameController game)
     {
-        // Implement special ability logic for WildDrawFourCard
-        return true;
-    }
-
-    public bool SpecialAbility(UnoGameController game, IPlayer player, Color color)
-    {
+        int index = game.GetPlayerNow().Id;
+        index = index+(int)game.GetGameDirection();
+        if(index > game.GetMaxPlayers()-1)
+			index = index-(game.GetMaxPlayers());
+		if(index < 0)
+			index = (game.GetMaxPlayers())+index;
+        game.SwitchPlayer(index);
+        var player = game.GetPlayerNow();
         game.DrawCard(player);
         game.DrawCard(player);
         game.DrawCard(player);
         game.DrawCard(player);
-        game.PlayerPickColor(color);
         return true;
     }
 

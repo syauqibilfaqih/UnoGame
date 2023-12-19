@@ -19,11 +19,14 @@ public class DrawTwoCard : Card
     public override bool SpecialAbility(UnoGameController game)
     {
         // Implement special ability logic for DrawTwoCard
-        return true;
-    }
-
-    public bool SpecialAbility(UnoGameController game, IPlayer player)
-    {
+        int index = game.GetPlayerNow().Id;
+        index = index+(int)game.GetGameDirection();
+        if(index > game.GetMaxPlayers()-1)
+			index = index-(game.GetMaxPlayers());
+		if(index < 0)
+			index = (game.GetMaxPlayers())+index;
+        game.SwitchPlayer(index);
+        var player = game.GetPlayerNow();
         game.DrawCard(player);
         game.DrawCard(player);
         return true;
@@ -32,7 +35,7 @@ public class DrawTwoCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour)
+        if(other.Color == this.Color || other.CardType == this.CardType)
             return true;
         else
             return false;

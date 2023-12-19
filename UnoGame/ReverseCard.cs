@@ -26,7 +26,7 @@ public class ReverseCard : Card
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour) 
+        if(other.Color == this.Color || other.CardType == this.CardType) 
             return true;
         else
             return false;

@@ -19,19 +19,15 @@ public class SkipCard : Card
     public override bool SpecialAbility(UnoGameController game)
     {
         // Implement special ability logic for SkipCard
-        return true;
-    }
-
-    public bool SpecialAbility(UnoGameController game, int indexPlayer)
-    {
-        game.SwitchPlayer(indexPlayer);
+        // int indexPlayerNow = game.GetPlayerNow().Id;
+        // game.SwitchPlayer(indexPlayerNow+2);
         return true;
     }
 
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
-        if(other.Color == this.Color || other.CardType == this.CardType || other.CardType == CardType.Wild || other.CardType == CardType.WildDrawFour)
+        if(other.Color == this.Color || other.CardType == this.CardType)
             return true;
         else
             return false;
