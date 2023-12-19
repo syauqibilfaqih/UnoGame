@@ -10,10 +10,10 @@ public class Player : IPlayer
 		Id = id;
 		Name = name;
 	}
-	
 
-	// public override int GetHashCode()
-	// {
-	//     return Id.GetHashCode();
-	// }
+	public Player()
+	{
+		Id = 0;
+		Name = null;
+	}
 }

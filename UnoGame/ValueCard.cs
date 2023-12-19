@@ -2,20 +2,15 @@ namespace UnoGame;
 
 public class ValueCard : Card
 {
-    // public ValueCard()
-    // {
-    //     // Id = 0; // Set an appropriate value for the Id
-    //     // Name = "ValueCard";
-    //     Color = Color.Red; // Set an appropriate default color
-    //     // Specify a default CardType or set it in the constructor parameters
-    //     CardType = CardType.Value0;
-    //     IsSpecialAbility = false;
-    // }
-
-    public ValueCard(/*int id, string name,*/ Color color, CardType cardType)
+    public ValueCard()
     {
-        // Id = id;
-        // Name = name;
+        Color = Color.Red; // Set an appropriate default color
+        CardType = CardType.Value0;
+        IsSpecialAbility = false;
+    }
+
+    public ValueCard(Color color, CardType cardType)
+    {
         Color = color;
         CardType = cardType;
         IsSpecialAbility = false;
@@ -35,6 +30,4 @@ public class ValueCard : Card
         else
             return false;
     }
-
-    // public override int GetHashCode() => Id;
 }

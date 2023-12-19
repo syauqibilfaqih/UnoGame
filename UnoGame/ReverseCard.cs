@@ -4,17 +4,13 @@ public class ReverseCard : Card
 {
     public ReverseCard()
     {
-        // Id = 0; // Set an appropriate value for the Id
-        // Name = "Reverse";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.Reverse;
         IsSpecialAbility = true;
     }
 
-    public ReverseCard(/*int id, string name,*/ Color color)
+    public ReverseCard(Color color)
     {
-        // Id = id;
-        // Name = name;
         Color = color;
         CardType = CardType.Reverse;
         IsSpecialAbility = true;
@@ -23,6 +19,7 @@ public class ReverseCard : Card
     public override bool SpecialAbility(UnoGameController game)
     {
         // Implement special ability logic for ReverseCard
+        game.SwitchGameDirection();
         return true;
     }
 
@@ -34,6 +31,4 @@ public class ReverseCard : Card
         else
             return false;
     }
-
-    // public override int GetHashCode() => Id;
 }

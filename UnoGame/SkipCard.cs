@@ -4,17 +4,13 @@ public class SkipCard : Card
 {
     public SkipCard()
     {
-        // Id = 0; // Set an appropriate value for the Id
-        // Name = "Skip";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.Skip;
         IsSpecialAbility = true;
     }
 
-    public SkipCard(/*int id, string name,*/ Color color)
+    public SkipCard(Color color)
     {
-        // Id = id;
-        // Name = name;
         Color = color;
         CardType = CardType.Skip;
         IsSpecialAbility = true;
@@ -34,6 +30,4 @@ public class SkipCard : Card
         else
             return false;
     }
-
-    // public override int GetHashCode() => Id;
 }

@@ -4,17 +4,13 @@ public class DrawTwoCard : Card
 {
     public DrawTwoCard()
     {
-        // Id = 0; // Set an appropriate value for the Id
-        // Name = "Draw Two";
         Color = Color.Red; // Set an appropriate default color
         CardType = CardType.DrawTwo;
         IsSpecialAbility = true;
     }
 
-    public DrawTwoCard(/*int id, string name,*/ Color color)
+    public DrawTwoCard(Color color)
     {
-        // Id = id;
-        // Name = name;
         Color = color;
         CardType = CardType.DrawTwo;
         IsSpecialAbility = true;
@@ -26,6 +22,13 @@ public class DrawTwoCard : Card
         return true;
     }
 
+    public bool SpecialAbility(UnoGameController game, IPlayer player)
+    {
+        game.DrawCard(player);
+        game.DrawCard(player);
+        return true;
+    }
+
     public override bool IsCardMatch(Card other)
     {
         // Implement logic to check if this card matches another card
@@ -34,6 +37,4 @@ public class DrawTwoCard : Card
         else
             return false;
     }
-
-    // public override int GetHashCode() => Id;
 }
