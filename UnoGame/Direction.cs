@@ -2,6 +2,6 @@ namespace UnoGame;
 
 public enum Direction
 {
-	Clockwise,
-    CounterClockwise
+	Clockwise = -1,
+    CounterClockwise = 1
 }
