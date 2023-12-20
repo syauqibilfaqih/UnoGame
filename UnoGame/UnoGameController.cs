@@ -22,6 +22,8 @@ public class UnoGameController
 	private IPlayer? _playerNow;
 	private List<IPlayer> _players = new List<IPlayer>();
 	private IPlayer? _winner;
+	private bool _sayUno;
+	private int _indexPlayer;
 
 	// Card Fields
 	private IDeck? _cardsOnDeck;
@@ -343,21 +345,19 @@ public class UnoGameController
 		return true;
 	}
 
-	// public bool PlayerSayUno(IPlayer player)
-	// {
-	// 	// Implementation
-	// 	return true;
-	// }
+	public bool PlayerSayUno(IPlayer player, bool state)
+	{
+		// Implementation
+		if(state)
+			_sayUno = true;
+		else	
+			_sayUno = false;
+		return true;
+	}
 
-	// public bool MoveCardTableToDeck()
-	// {
-	// 	// Implementation
-	// 	return false;
-	// }
-	// public bool PlayCard(IPlayer player, params Card[] cards)
-	// {
-	// 	// Implementation
-	// 	return false;
-	// }
-	// Starting the game Methods
+	public bool IsPlayerSayUNO()
+	{
+		return _sayUno;
+	}
+	
 }
