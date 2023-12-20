@@ -153,10 +153,6 @@ class Program
 					if(currentCard.IsSpecialAbility)
 					{
 						currentCard.SpecialAbility(unoGameMaster);
-						if(currentCard.CardType == CardType.Skip)
-						{
-							indexPlayer = indexPlayer + (int)unoGameMaster.GetGameDirection();
-						}
 						if(currentCard.CardType == CardType.Wild || currentCard.CardType == CardType.WildDrawFour)
 						{
 							while(true)
@@ -175,6 +171,10 @@ class Program
 									//throw;
 								}
 							}
+						}
+						if(currentCard.CardType == CardType.Skip || currentCard.CardType == CardType.DrawTwo || currentCard.CardType == CardType.WildDrawFour)
+						{
+							indexPlayer = indexPlayer + (int)unoGameMaster.GetGameDirection();
 						}
 					}
 
