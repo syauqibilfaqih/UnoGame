@@ -10,6 +10,9 @@ public class Deck : IDeck
 {
 	public HashSet<Card> CardsOnDeck { get; set; }
 
+    /// <summary>
+    /// A constructor for class deck to generate collection of cards when it's called as an instance
+    /// </summary>
     public Deck()
     {
         CardsOnDeck = new HashSet<Card>();
