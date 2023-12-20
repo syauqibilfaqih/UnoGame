@@ -35,6 +35,7 @@ public class UnoGameController
 	// Score Fields
 	private Dictionary<IPlayer, int>? _playerScoreList;
 
+	// Constructors
 	public UnoGameController()
 	{
 		_cardsOnDeck = new Deck();
@@ -63,6 +64,7 @@ public class UnoGameController
 		_cardsOnDeck.CardsOnDeck = (HashSet<Card>)customCard;
 	}
 
+	// Player
 	public void AddPlayer(IPlayer player, int numberOfIndex)
 	{
 		// Implementation
@@ -85,6 +87,21 @@ public class UnoGameController
 		// Implementation
 		return _players;
 	}
+
+	public IPlayer? GetPlayerNow()
+	{
+		// Implementation
+		return _playerNow;
+	}
+
+	public void SwitchPlayer(int indexOfPlayer)
+	{
+		// Implementation
+		_playerNow = _players.ElementAt(indexOfPlayer);
+	}
+
+	
+	// Card Methods
 
 	public void AddCardToPlayer(IPlayer player, int numberOfCard)
 	{
@@ -155,34 +172,6 @@ public class UnoGameController
 		return _cardOnTable.Peek();
 	}
 
-	// Ending the game Methods
-	public bool IsGameOver(IPlayer player)
-	{
-		// Implementation
-		List<Card> cards = _cardsOnPlayers[player];
-		if(!cards.Any())
-		{
-			_winner = player;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	public IPlayer? GetPlayerNow()
-	{
-		// Implementation
-		return _playerNow;
-	}
-
-	public void SwitchPlayer(int indexOfPlayer)
-	{
-		// Implementation
-		_playerNow = _players.ElementAt(indexOfPlayer);
-	}
-
 	// Game Direction & Status Methods
 	public GameStatus GetGameStatus()
 	{
@@ -226,6 +215,12 @@ public class UnoGameController
 		// Implementation
 		_cardsOnDeck.CardsOnDeck.Remove(card);
 	}
+
+	public void AddCardToDeck(Card card)
+	{
+		_cardsOnDeck.CardsOnDeck.Add(card);
+	}
+
 
 	// Player Card Methods
 	public IEnumerable<Card> CheckPlayerCard(IPlayer player)
@@ -299,6 +294,15 @@ public class UnoGameController
 		return _pickedColor;
 	}
 
+	// Game Status
+	
+	public bool StartGame()
+	{
+		// Implementation
+		_gameStatus = GameStatus.GameRunning;
+		return true;
+	}
+	
 	public bool PauseGame()
 	{
 		// Implementation
@@ -333,18 +337,6 @@ public class UnoGameController
 		return totalScore;
 	}
 
-	public void AddCardToDeck(Card card)
-	{
-		_cardsOnDeck.CardsOnDeck.Add(card);
-	}
-
-	public bool StartGame()
-	{
-		// Implementation
-		_gameStatus = GameStatus.GameRunning;
-		return true;
-	}
-
 	public bool PlayerSayUno(IPlayer player, bool state)
 	{
 		// Implementation
@@ -358,6 +350,22 @@ public class UnoGameController
 	public bool IsPlayerSayUNO()
 	{
 		return _sayUno;
+	}
+
+	// Ending the game Methods
+	public bool IsGameOver(IPlayer player)
+	{
+		// Implementation
+		List<Card> cards = _cardsOnPlayers[player];
+		if(!cards.Any())
+		{
+			_winner = player;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 	
 }
