@@ -1,8 +1,15 @@
 using System.Collections.Generic;
+using NLog;
 namespace UnoGame;
 
 public class UnoGameController
 {
+
+	/// <summary>
+    /// Instance of UnoGameController logger.
+    /// </summary>
+    private readonly ILogger _logger;
+
 	/// <summary>
 	/// Event raised to update the game status.
 	/// </summary>
@@ -118,11 +125,13 @@ public class UnoGameController
 	/// </summary>
 	public UnoGameController()
 	{
+		_logger?.Info("Creating game...");
 		_cardsOnDeck = new Deck();
 		_cardsOnPlayers = new Dictionary<IPlayer, List<Card>>();
 		_cardOnTable = new Stack<Card>();
 		_winner = new Player();
 		_maxPlayers = 2; // Default maximum number of players.
+		_logger?.Info("Game created!");
 	}
 
 	/// <summary>
@@ -131,11 +140,13 @@ public class UnoGameController
 	/// <param name="maxPlayers">The maximum number of players.</param>
 	public UnoGameController(int maxPlayers)
 	{
+		_logger?.Info("Creating game...");
 		_cardsOnDeck = new Deck();
 		_cardsOnPlayers = new Dictionary<IPlayer, List<Card>>();
 		_cardOnTable = new Stack<Card>();
 		_winner = new Player();
 		_maxPlayers = maxPlayers;
+		_logger?.Info("Game created!");
 	}
 
 	/// <summary>
@@ -146,12 +157,14 @@ public class UnoGameController
 	/// <param name="customCard">Custom set of cards to use in the game.</param>
 	public UnoGameController(int maxPlayers, IEnumerable<Card> customCard)
 	{
+		_logger?.Info("Creating game...");
 		_cardsOnDeck = new Deck();
 		_cardsOnPlayers = new Dictionary<IPlayer, List<Card>>();
 		_cardOnTable = new Stack<Card>();
 		_maxPlayers = maxPlayers;
 		_winner = new Player();
 		_cardsOnDeck.CardsOnDeck = new HashSet<Card>(customCard);
+		_logger?.Info("Game created!");
 	}
 
 	/// <summary>
@@ -162,18 +175,21 @@ public class UnoGameController
 	/// <exception cref="ArgumentOutOfRangeException">Thrown if the maximum number of players is already reached.</exception>
 	public void AddPlayer(IPlayer player, int numberOfIndex)
 	{
+		_logger?.Info("Adding player...");
 		if (_players.Count <= _maxPlayers)
 		{
 			_players.Insert(numberOfIndex, player);
 			UpdatePlayerList?.Invoke(_players);
 			UpdateAddPlayer?.Invoke(player);
+			_logger?.Info("Player added");
 		}
 		else
 		{
-			throw new ArgumentOutOfRangeException(
-				nameof(_players),
-				"The maximum number of players is already fulfilled."
-			);
+			_logger?.Error("The maximum number of players is already fulfilled.");
+			// throw new ArgumentOutOfRangeException(
+			// 	nameof(_players),
+			// 	"The maximum number of players is already fulfilled."
+			// );
 		}
 	}
 
@@ -210,7 +226,9 @@ public class UnoGameController
 	/// <param name="indexOfPlayer">The index of the player to switch to.</param>
 	public void SwitchPlayer(int indexOfPlayer)
 	{
+		_logger?.Info("Switching player turn...");
 		_playerNow = _players.ElementAt(indexOfPlayer);
+		_logger?.Info("Switch player succeed.");
 	}
 
 	/// <summary>
@@ -220,6 +238,7 @@ public class UnoGameController
 	/// <param name="numberOfCard">The number of cards to add to the player.</param>
 	public void AddCardToPlayer(IPlayer player, int numberOfCard)
 	{
+		_logger?.Info("Adding cards to player...");
 		Random random = new();
 		List<Card> cards = new();
 		for (int i = 0; i < numberOfCard; i++)
@@ -227,6 +246,7 @@ public class UnoGameController
 			cards.Add(_cardsOnDeck.CardsOnDeck.ElementAt(random.Next(_cardsOnDeck.CardsOnDeck.Count)));
 		}
 		_cardsOnPlayers.Add(player, cards);
+		_logger?.Info("Cards added.");
 	}
 
 	/// <summary>
@@ -236,10 +256,12 @@ public class UnoGameController
 	/// <param name="card">The card to add to the player.</param>
 	public void AddCardToPlayer(IPlayer player, Card card)
 	{
+		_logger?.Info("Adding card to player...");
 		List<Card> cards = _cardsOnPlayers[player];
 		cards.Add(card);
 		_cardsOnPlayers[player] = cards;
 		UpdatePlayerDrawCard?.Invoke(player, cards);
+		_logger?.Info("The card added to player.");
 	}
 
 	/// <summary>
@@ -248,10 +270,12 @@ public class UnoGameController
 	/// <param name="player">The player to whom the card should be added.</param>
 	public void AddCardToPlayer(IPlayer player)
 	{
+		_logger?.Info("Adding card to player...");
 		Random random = new();
 		List<Card> cards = _cardsOnPlayers[player];
 		cards.Add(_cardsOnDeck.CardsOnDeck.ElementAt(random.Next(_cardsOnDeck.CardsOnDeck.Count)));
 		_cardsOnPlayers[player] = cards;
+		_logger?.Info("A card added to player.");
 	}
 
 	/// <summary>
@@ -283,8 +307,10 @@ public class UnoGameController
 	/// <param name="card">The card to add to the table.</param>
 	public void AddCardToTable(Card card)
 	{
+		_logger?.Info("Adding the card to the table...");
 		_cardOnTable.Push(card);
 		UpdatePlayedCard?.Invoke(_playerNow, _cardOnTable.Peek());
+		_logger?.Info("The card added successfully.");
 	}
 
 	/// <summary>
@@ -292,6 +318,7 @@ public class UnoGameController
 	/// </summary>
 	public void AddCardToTable()
 	{
+		_logger?.Info("Adding a card to table...");
 		Random random = new();
 		while (true)
 		{
@@ -302,6 +329,7 @@ public class UnoGameController
 				break;
 			}
 		}
+		_logger?.Info("A card added successfully.");
 	}
 
 	/// <summary>
@@ -337,7 +365,9 @@ public class UnoGameController
 	/// <param name="direction">The direction to switch to.</param>
 	public void SwitchGameDirection(Direction direction)
 	{
+		_logger?.Info("Reverse direction...");
 		_direction = direction;
+		_logger?.Info("Game direction reversed.");
 	}
 
 	/// <summary>
@@ -345,6 +375,7 @@ public class UnoGameController
 	/// </summary>
 	public void SwitchGameDirection()
 	{
+		_logger?.Info("Reverse direction...");
 		if (_direction == Direction.Clockwise)
 		{
 			_direction = Direction.CounterClockwise;
@@ -353,6 +384,7 @@ public class UnoGameController
 		{
 			_direction = Direction.Clockwise;
 		}
+		_logger?.Info("Game direction reversed.");
 	}
 
 	/// <summary>
@@ -370,7 +402,9 @@ public class UnoGameController
 	/// <param name="card">The card to be removed.</param>
 	public void RemoveCardFromDeck(Card card)
 	{
+		_logger?.Info("Removing card from deck...");
 		_cardsOnDeck.CardsOnDeck.Remove(card);
+		_logger?.Info("Card removed.");
 	}
 
 	/// <summary>
@@ -379,7 +413,9 @@ public class UnoGameController
 	/// <param name="card">The card to be added.</param>
 	public void AddCardToDeck(Card card)
 	{
+		_logger?.Info("Adding the card to the deck...");
 		_cardsOnDeck.CardsOnDeck.Add(card);
+		_logger?.Info("The card was added successfully.");
 	}
 
 	/// <summary>
@@ -389,10 +425,17 @@ public class UnoGameController
 	/// <returns>The cards held by the player, or null if the player is not found.</returns>
 	public IEnumerable<Card>? CheckPlayerCard(IPlayer player)
 	{
+		_logger?.Info("Checking player cards...");
 		if (_players.Contains(player))
+		{
+			_logger?.Info("Successfully check the player's cards.");
 			return _cardsOnPlayers[player];
+		}
 		else
+		{
+			_logger?.Warn("There's no player you meant.");
 			return null;
+		}
 	}
 
 	/// <summary>
@@ -402,9 +445,11 @@ public class UnoGameController
 	/// <param name="card">The card to be removed.</param>
 	public void RemoveCardFromPlayer(IPlayer player, Card card)
 	{
+		_logger?.Info("Removing card from player...");
 		var listCard = _cardsOnPlayers[player];
 		listCard.Remove(card);
 		_cardsOnPlayers[player] = listCard;
+		_logger?.Info("Card: {card}, was removed successfully.", card);
 	}
 
 	/// <summary>
@@ -425,6 +470,7 @@ public class UnoGameController
 	/// <returns>True if the card is possible to play, false otherwise.</returns>
 	public bool IsAnyCardPossible(IPlayer player, int indexOfCard, Card otherCard)
 	{
+		_logger?.Info("Check if there's any possible card...");
 		List<Card> cards = _cardsOnPlayers[player];
 		return cards.ElementAt(indexOfCard).IsCardMatch(otherCard) || cards.ElementAt(indexOfCard).Color == _pickedColor;
 	}
@@ -437,6 +483,7 @@ public class UnoGameController
 	/// <returns>The list of possible cards, or null if the player is not found.</returns>
 	public IEnumerable<Card>? CheckPossibleCard(IPlayer player, Card otherCard)
 	{
+		_logger?.Info("Check possible cards...");
 		List<Card> possibleCards = new List<Card>();
 		if (_players.Contains(player))
 		{
@@ -448,10 +495,12 @@ public class UnoGameController
 				}
 			}
 			UpdatePossibleCard?.Invoke(player, possibleCards);
+			_logger?.Info("Possible cards are including: {logpossibleCards}.", possibleCards);
 			return possibleCards;
 		}
 		else
 		{
+			_logger?.Warn("There's no player you meant.");
 			return null;
 		}
 	}
@@ -462,8 +511,10 @@ public class UnoGameController
 	/// <param name="color">The color picked by the player.</param>
 	public void PlayerPickColor(Color color)
 	{
+		_logger?.Info("Player picking color...");
 		_pickedColor = color;
 		UpdatePickedColor?.Invoke(_playerNow, _pickedColor);
+		_logger?.Info("Color: {color} successfully picked", _pickedColor);
 	}
 
 	/// <summary>
@@ -481,8 +532,10 @@ public class UnoGameController
 	/// <returns>True if the game started successfully, false otherwise.</returns>
 	public bool StartGame()
 	{
+		_logger?.Info("Starting the game...");
 		_gameStatus = GameStatus.GameRunning;
 		UpdateGameStatus?.Invoke(_gameStatus);
+		_logger?.Info("Game started!");
 		return true;
 	}
 
@@ -492,8 +545,10 @@ public class UnoGameController
 	/// <returns>True if the game paused successfully, false otherwise.</returns>
 	public bool PauseGame()
 	{
+		_logger?.Info("Pausing the game...");
 		_gameStatus = GameStatus.GamePause;
 		UpdateGameStatus?.Invoke(_gameStatus);
+		_logger?.Info("Game paused!");
 		return true;
 	}
 
@@ -503,8 +558,10 @@ public class UnoGameController
 	/// <returns>True if the game ended successfully, false otherwise.</returns>
 	public bool EndGame()
 	{
+		_logger?.Info("Ending the game...");
 		_gameStatus = GameStatus.GameOver;
 		UpdateGameStatus?.Invoke(_gameStatus);
+		_logger?.Info("Game ended");
 		return true;
 	}
 
@@ -541,10 +598,17 @@ public class UnoGameController
 	/// <returns>True if the player has said "UNO," false otherwise.</returns>
 	public bool PlayerSayUno(IPlayer player, bool state)
 	{
+		_logger?.Info("Check if player said UNO...");
 		if (state)
+		{
 			_sayUno = true;
+			_logger?.Info("Player said UNO.");
+		}
 		else
+		{
 			_sayUno = false;
+			_logger?.Info("Player didn't say UNO.");
+		}
 		UpdateSayUno?.Invoke(player);
 		return true;
 	}
@@ -565,14 +629,17 @@ public class UnoGameController
 	/// <returns>True if the game is over for the player, false otherwise.</returns>
 	public bool IsGameOver(IPlayer player)
 	{
+		_logger?.Info("Checking if the game is over...");
 		List<Card> cards = _cardsOnPlayers[player];
 		if (!cards.Any())
 		{
 			_winner = player;
+			_logger?.Info("Game over.");
 			return true;
 		}
 		else
 		{
+			_logger?.Info("Game continue.");
 			return false;
 		}
 	}	

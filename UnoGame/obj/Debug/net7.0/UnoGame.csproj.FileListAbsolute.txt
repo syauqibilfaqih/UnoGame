@@ -28,3 +28,5 @@ D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\refint\UnoGame.dll
 D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.pdb
 d:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.genruntimeconfig.cache
 d:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\ref\UnoGame.dll
+D:\Practices\CSharp\UnoGame\UnoGame\bin\Debug\net7.0\NLog.dll
+D:\Practices\CSharp\UnoGame\UnoGame\obj\Debug\net7.0\UnoGame.csproj.CopyComplete
