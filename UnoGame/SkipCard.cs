@@ -21,6 +21,7 @@ public class SkipCard : Card
         // Implement special ability logic for SkipCard
         // int indexPlayerNow = game.GetPlayerNow().Id;
         // game.SwitchPlayer(indexPlayerNow+2);
+        game.ShiftIndexPlayer();
         return true;
     }
 

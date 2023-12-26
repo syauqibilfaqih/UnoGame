@@ -23,6 +23,7 @@ public class WildDrawFourCard : Card
         game.DrawCard(player);
         game.DrawCard(player);
         game.DrawCard(player);
+        game.ShiftIndexPlayer();
         return true;
     }
 

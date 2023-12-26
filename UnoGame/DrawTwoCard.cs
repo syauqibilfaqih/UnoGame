@@ -29,6 +29,7 @@ public class DrawTwoCard : Card
         var player = game.GetPlayerNow();
         game.DrawCard(player);
         game.DrawCard(player);
+        game.ShiftIndexPlayer();
         return true;
     }
 
