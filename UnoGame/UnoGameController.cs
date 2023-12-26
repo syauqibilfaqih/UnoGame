@@ -194,6 +194,38 @@ public class UnoGameController
 	}
 
 	/// <summary>
+	/// To set index of player's turn
+	/// /// </summary>
+	/// <param name="index">the value of index</param>
+	public void SetIndexPlayer(int index)
+	{
+		_indexPlayer = index;
+	}
+
+	/// <summary>
+	/// To get the current index
+	/// </summary>
+	/// <returns></returns>
+	public int GetIndexPlayer()
+	{
+		return _indexPlayer;
+	}
+
+	/// <summary>
+	/// To shift the player turn
+	/// </summary>
+	public void ShiftIndexPlayer()
+	{
+		_indexPlayer = _indexPlayer + (int)GetGameDirection();
+
+		if(_indexPlayer > _maxPlayers-1)
+			_indexPlayer = _indexPlayer-(_maxPlayers);
+		if(_indexPlayer < 0)
+			_indexPlayer = (_maxPlayers)+_indexPlayer;
+	}
+
+
+	/// <summary>
 	/// Gets the maximum number of players allowed in the game.
 	/// </summary>
 	/// <returns>The maximum number of players.</returns>
