@@ -465,7 +465,7 @@ public class UnoGameController
 		}
 		else
 		{
-			_logger?.Warn("There's no player you meant.");
+			_logger?.Warn("Player not found.");
 			return null;
 		}
 	}
