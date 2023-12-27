@@ -455,18 +455,18 @@ public class UnoGameController
 	/// </summary>
 	/// <param name="player">The player to check.</param>
 	/// <returns>The cards held by the player, or null if the player is not found.</returns>
-	public IEnumerable<Card>? CheckPlayerCard(IPlayer player)
+	public IEnumerable<Card> CheckPlayerCard(IPlayer player)
 	{
-		_logger?.Info("Checking player cards...");
+		_logger?.Info("Checking {player} cards...", player.Name);
 		if (_players.Contains(player))
 		{
 			_logger?.Info("Successfully check the player's cards.");
-			return _cardsOnPlayers[player];
+			return _cardsOnPlayers[player].ToList();
 		}
 		else
 		{
-			_logger?.Warn("Player not found.");
-			return null;
+			_logger?.Warn("{Player} not found.",player.Name); 
+			return Enumerable.Empty<Card>();
 		}
 	}
 
